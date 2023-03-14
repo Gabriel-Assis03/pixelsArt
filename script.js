@@ -41,3 +41,18 @@ btnColorRandom.addEventListener("click", () => {
     localStorage.setItem('colorPalette', JSON.stringify(colorPalette));
 
 })
+
+//Tela de pixels
+
+const pixelBoard = document.querySelector("#pixel-board");
+for (let index = 0; index < 5; index += 1) {
+    const div = document.createElement("div");
+    pixelBoard.appendChild(div)
+    for (let index = 0; index < 5; index += 1) {
+        const div2 = document.createElement("div");
+        div2.className = "pixel"
+        div.appendChild(div2)
+    }
+
+}
+
