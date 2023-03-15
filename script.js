@@ -100,10 +100,35 @@ color4.addEventListener("click", () => {
     }
 })
 
+//Gardando a cor dos pixels
+
+const pixel = document.querySelectorAll(".pixel")
+//localStorage.clear()
+if(JSON.parse(localStorage.getItem('pixelBoard')) == null) {
+
+    let p = [];
+    for (let index = 0; index < tela*tela; index += 1) {
+        p.push('white');
+    }
+    let colorPixels = {
+        corPixels: p
+    }
+    localStorage.setItem('pixelBoard', JSON.stringify(colorPixels));
+
+}else {
+
+    var colorPixels = JSON.parse(localStorage.getItem('pixelBoard'));
+    var colorPositionPixel = colorPixels.corPixels
+    for (let index = 0; index < tela*tela; index += 1) {
+        pixel[index].style.background = colorPositionPixel[index];
+    }
+
+}
+
 //pintando os pixels 
 
 
-const pixel = document.querySelectorAll(".pixel")
+
 for (let index = 0; index < tela*tela; index += 1) {
     pixel[index].addEventListener('click', () => {
         if (color1.classList.contains("selected")) {
@@ -122,6 +147,11 @@ for (let index = 0; index < tela*tela; index += 1) {
             pixel[index].style.background = color;
         }
     })
+    pixel[index].addEventListener('click', () => {
+        colorPositionPixel[index] = pixel[index].style.background;
+        colorPixels.corPixels = colorPositionPixel;
+        localStorage.setItem('pixelBoard', JSON.stringify(colorPixels));
+    })
 }
     
 //botao de limpar a tela
@@ -130,5 +160,8 @@ const limpar = document.querySelector("#clear-board");
 limpar.addEventListener('click', () => {
     for (let index = 0; index < tela*tela; index += 1) {
         pixel[index].style.background = 'white';
+        colorPositionPixel[index] = pixel[index].style.background;
+        colorPixels.corPixels = colorPositionPixel;
+        localStorage.setItem('pixelBoard', JSON.stringify(colorPixels));
     }
 })
