@@ -124,3 +124,11 @@ for (let index = 0; index < tela*tela; index += 1) {
     })
 }
     
+//botao de limpar a tela
+
+const limpar = document.querySelector("#clear-board");
+limpar.addEventListener('click', () => {
+    for (let index = 0; index < tela*tela; index += 1) {
+        pixel[index].style.background = 'white';
+    }
+})
