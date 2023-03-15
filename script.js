@@ -100,7 +100,7 @@ color4.addEventListener("click", () => {
     }
 })
 
-//pintando os pixels
+//pintando os pixels 
 
 
 const pixel = document.querySelectorAll(".pixel")
