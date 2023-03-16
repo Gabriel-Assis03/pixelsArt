@@ -5,6 +5,19 @@ const color3 = document.querySelector("#color3");
 const color4 = document.querySelector("#color4");
 const btnColorRandom = document.querySelector("#button-random-color");
 let tela = 5;
+
+//tamanho da tela
+
+const btnVQV = document.querySelector("#generate-board");
+btnVQV.addEventListener('click', () => {
+    const text = document.querySelector("#board-size")
+    let tamanho = text.value;
+    tamanho = parseInt(tamanho);
+    if (tamanho > 0) {
+        tela = tamanho;
+    }
+})
+
 if(JSON.parse(localStorage.getItem('colorPalette')) == null) {
 
     var colorPalette = {
